@@ -1,11 +1,7 @@
 @import "tailwindcss";
 /* @config "./tailwind.config.js"; */
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
 body {
-  /* ../img/bg-tablet-pattern.svg */
   
     background-image: url('/img/bg-tablet-pattern.svg');
     background-repeat: no-repeat;
