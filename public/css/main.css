@@ -34,10 +34,8 @@
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --default-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --default-mono-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
   }
 }
 @layer base {
@@ -51,10 +49,9 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-feature-settings: initial;
-    font-variation-settings: initial;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
   }
   hr {
@@ -79,10 +76,9 @@
     font-weight: bolder;
   }
   code, kbd, samp, pre {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
-    font-feature-settings: initial;
-    font-variation-settings: initial;
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
     font-size: 1em;
   }
   small {
@@ -325,32 +321,38 @@
   }
   .container {
     width: 100%;
-    @media (width >= 480px) {
-      max-width: 480px;
+    @media (width >= 40rem) {
+      max-width: 40rem;
     }
-    @media (width >= 720px) {
-      max-width: 720px;
+    @media (width >= 48rem) {
+      max-width: 48rem;
     }
-    @media (width >= 976px) {
-      max-width: 976px;
+    @media (width >= 64rem) {
+      max-width: 64rem;
     }
-    @media (width >= 1440px) {
-      max-width: 1440px;
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
     }
   }
   .container\! {
     width: 100% !important;
-    @media (width >= 480px) {
-      max-width: 480px !important;
+    @media (width >= 40rem) {
+      max-width: 40rem !important;
     }
-    @media (width >= 720px) {
-      max-width: 720px !important;
+    @media (width >= 48rem) {
+      max-width: 48rem !important;
     }
-    @media (width >= 976px) {
-      max-width: 976px !important;
+    @media (width >= 64rem) {
+      max-width: 64rem !important;
     }
-    @media (width >= 1440px) {
-      max-width: 1440px !important;
+    @media (width >= 80rem) {
+      max-width: 80rem !important;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem !important;
     }
   }
   .mx-auto {
@@ -481,9 +483,6 @@
   }
   .min-h-screen {
     min-height: 100vh;
-  }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -1192,12 +1191,6 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-  .bg-bright-red-sup-light {
-    background-color: hsl(12, 88%, 95%);
-  }
-  .bg-brightred {
-    background-color: hsl(12, 88%, 59%);
-  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -1206,12 +1199,6 @@
   }
   .bg-red-500\/\[50\%\] {
     background-color: color-mix(in oklab, var(--color-red-500) 50%, transparent);
-  }
-  .bg-very-dark-blue {
-    background-color: hsl(233, 12%, 13%);
-  }
-  .bg-very-light-gray {
-    background-color: hsl(0, 0%, 98%);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -1564,12 +1551,6 @@
   }
   .\[color\:red\]\/50\! {
     color: color-mix(in oklab, red 50%, transparent) !important;
-  }
-  .text-brightred {
-    color: hsl(12, 88%, 59%);
-  }
-  .text-dark-grayish-blue {
-    color: hsl(227, 12%, 61%);
   }
   .text-gray-300 {
     color: var(--color-gray-300);
@@ -2023,13 +2004,6 @@
   .transform-view {
     transform-box: view-box;
   }
-  .hover\:bg-bright-red-light {
-    &:hover {
-      @media (hover: hover) {
-        background-color: hsl(12, 88%, 69%);
-      }
-    }
-  }
   .hover\:bg-gray-300 {
     &:hover {
       @media (hover: hover) {
@@ -2044,20 +2018,6 @@
       }
     }
   }
-  .hover\:text-brightred {
-    &:hover {
-      @media (hover: hover) {
-        color: hsl(12, 88%, 59%);
-      }
-    }
-  }
-  .hover\:text-dark-grayish-blue {
-    &:hover {
-      @media (hover: hover) {
-        color: hsl(227, 12%, 61%);
-      }
-    }
-  }
   .focus\:outline-none {
     &:focus {
       --tw-outline-style: none;
@@ -2065,72 +2025,72 @@
     }
   }
   .sm\:w-auto {
-    @media (width >= 480px) {
+    @media (width >= 40rem) {
       width: auto;
     }
   }
   .sm\:self-center {
-    @media (width >= 480px) {
+    @media (width >= 40rem) {
       align-self: center;
     }
   }
   .md\:mb-4 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 4);
     }
   }
   .md\:block {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       display: block;
     }
   }
   .md\:flex {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       display: flex;
     }
   }
   .md\:hidden {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       display: none;
     }
   }
   .md\:w-1\/2 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       width: calc(1/2 * 100%);
     }
   }
   .md\:w-1\/3 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       width: calc(1/3 * 100%);
     }
   }
   .md\:max-w-xl {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       max-width: var(--container-xl);
     }
   }
   .md\:flex-col {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       flex-direction: column;
     }
   }
   .md\:flex-row {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       flex-direction: row;
     }
   }
   .md\:items-start {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       align-items: flex-start;
     }
   }
   .md\:justify-start {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       justify-content: flex-start;
     }
   }
   .md\:space-y-0 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       :where(& > :not(:last-child)) {
         --tw-space-y-reverse: 0;
         margin-block-start: calc(calc(var(--spacing) * 0) * var(--tw-space-y-reverse));
@@ -2139,7 +2099,7 @@
     }
   }
   .md\:space-x-6 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       :where(& > :not(:last-child)) {
         --tw-space-x-reverse: 0;
         margin-inline-start: calc(calc(var(--spacing) * 6) * var(--tw-space-x-reverse));
@@ -2148,40 +2108,40 @@
     }
   }
   .md\:bg-transparent {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       background-color: transparent;
     }
   }
   .md\:py-1 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 1);
     }
   }
   .md\:py-12 {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 12);
     }
   }
   .md\:text-left {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       text-align: left;
     }
   }
   .md\:text-4xl {
-    @media (width >= 720px) {
+    @media (width >= 48rem) {
       font-size: var(--text-4xl);
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
 }
 body {
-  background-image: url('../img/bg-tablet-pattern.svg');
+  background-image: url('/img/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
   background-size: 800px;
   background-position: 90% -25%;
 }
 #cta {
-  background-image: url('../img/bg-simplify-section-desktop.svg');
+  background-image: url('/img/bg-simplify-section-desktop.svg');
   background-repeat: no-repeat;
 }
 @media (max-width: 576px) {
@@ -2190,7 +2150,7 @@ body {
     background-size: 500px;
   }
   #cta {
-    background-image: url('../img/bg-simplify-section-mobile.svg');
+    background-image: url('/img/bg-simplify-section-mobile.svg');
   }
 }
 .hamburger {
