@@ -1,6 +1,6 @@
 
  export default {
-    content: ["./src/**/*.{html,js}", "./index.html"],
+    content: ["./src/**/*.{html,js}", "./public/index.html"],
     theme: {
         screens: {
             sm: '480px',
